@@ -5,7 +5,7 @@ export const PERSONAL_INFO = {
   phone: "+94-766368845",
   location: "Malabe, Sri Lanka",
   github: "https://github.com/ridmike",
-  linkedin: "https://linkedin.com/in/ridmike",
+  linkedin: "www.linkedin.com/in/shakil-ridmike",
   about: "As a Computer Science undergraduate, I have a strong passion for mobile application development, specializing in Flutter and React Native. My experience spans designing intuitive user interfaces, analyzing system requirements, and delivering innovative solutions. Beyond technical skills, I thrive in collaborative environments, working effectively within teams using agile methodologies. I am also familiar with web development, frontend technologies, and backend integration. Adaptable and eager to learn, I am looking for an internship opportunity where I can apply my expertise, enhance my problem-solving abilities, and contribute to impactful software solutions."
 };
 
