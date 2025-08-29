@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    const segments = 1; // Increase this if you need deeper paths
+    const l = window.location;
+    const paths = l.pathname.split('/').filter(x => x);
+    if (paths.length > segments) {
+      paths.splice(0, segments);
+      l.replace(`${l.protocol}//${l.host}/Shakil-s_Portfolio/?p=${paths.join('/')}`);
+    } else {
+      l.replace(`${l.protocol}//${l.host}/Shakil-s_Portfolio/`);
+    }
+  </script>
+</head>
+<body>
+  Redirecting...
+</body>
+</html>
