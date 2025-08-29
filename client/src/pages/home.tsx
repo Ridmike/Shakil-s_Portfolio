@@ -6,6 +6,7 @@ import { SkillsSection } from "@/components/skills-section";
 import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
 import { ProjectModal } from "@/components/project-modal";
+import { EducationSection } from "@/components/education";
 
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
@@ -25,6 +26,7 @@ export default function Home() {
     <div className="min-h-screen">
       <HeroSection />
       <AboutSection />
+      <EducationSection />
       <ProjectsSection onProjectClick={handleProjectClick} />
       <SkillsSection />
       <ContactSection />

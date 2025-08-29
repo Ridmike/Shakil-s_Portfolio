@@ -253,7 +253,7 @@ export function ContactSection() {
             </motion.div>
 
             {/* QR Code */}
-            <motion.div
+            {/* <motion.div
               variants={fadeInUp}
               className="bg-white dark:bg-slate-800 p-6 rounded-lg text-center border border-slate-200 dark:border-slate-700"
             >
@@ -268,7 +268,7 @@ export function ContactSection() {
               <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">
                 Scan for LinkedIn
               </p>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         </div>
       </div>

@@ -1,131 +1,100 @@
 import { motion } from "framer-motion";
-import { 
-  MessageCircle, 
-  Users, 
-  Lightbulb, 
-  Clock, 
-  Crown, 
-  Brain 
-} from "lucide-react";
-import { Progress } from "@/components/ui/progress";
-import { Card, CardContent } from "@/components/ui/card";
-import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { useInView } from "react-intersection-observer";
+import { useState, useEffect } from "react";
 import { SKILLS } from "@/lib/constants";
 
-const iconMap = {
-  MessageCircle,
-  Users,
-  Lightbulb,
-  Clock,
-  Crown,
-  Brain
-};
-
 export function SkillsSection() {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+  
+  const [animatedSkills, setAnimatedSkills] = useState<number[]>([]);
+
+  useEffect(() => {
+    if (inView) {
+      SKILLS.technical.forEach((_, index) => {
+        setTimeout(() => {
+          setAnimatedSkills(prev => [...prev, index]);
+        }, index * 100);
+      });
+    }
+  }, [inView]);
+
   return (
-    <section id="skills" className="py-20 bg-white dark:bg-slate-800">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-          className="text-center mb-16"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-white"
+    <section id="skills" className="py-20 bg-slate-50/30 dark:bg-slate-900/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
           >
-            Skills & Expertise
+            Technical Skills
           </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-xl text-slate-600 dark:text-slate-300"
+          <motion.div 
+            className="w-20 h-1 bg-primary mx-auto mb-4"
+            initial={{ width: 0 }}
+            animate={inView ? { width: 80 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          />
+          <motion.p 
+            className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Technologies I work with
+            A comprehensive toolkit of modern technologies and frameworks
           </motion.p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Technical Skills */}
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
-            <motion.h3
-              variants={fadeInUp}
-              className="text-2xl font-semibold mb-8 text-slate-900 dark:text-white"
+        </div>
+        
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {SKILLS.technical.map((skill, index) => (
+            <motion.div 
+              key={skill.name}
+              className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group"
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+              }}
+              whileTap={{ scale: 0.95 }}
             >
-              Technical Skills
-            </motion.h3>
-            <div className="space-y-6">
-              {SKILLS.technical.map((skill, index) => (
-                <motion.div
-                  key={skill.name}
-                  variants={fadeInUp}
-                  className="space-y-2"
-                >
-                  <div className="flex justify-between items-center">
-                    <span className="font-medium text-slate-900 dark:text-white">
-                      {skill.name}
-                    </span>
-                    <span className="text-sm text-slate-500 dark:text-slate-400">
-                      {skill.category}
-                    </span>
-                  </div>
-                  <div className="relative">
-                    <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
-                      <motion.div
-                        className="bg-primary h-2 rounded-full"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: index * 0.1 }}
-                      />
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Soft Skills */}
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
-            <motion.h3
-              variants={fadeInUp}
-              className="text-2xl font-semibold mb-8 text-slate-900 dark:text-white"
-            >
-              Soft Skills
-            </motion.h3>
-            <div className="grid grid-cols-2 gap-4">
-              {SKILLS.soft.map((skill, index) => {
-                const IconComponent = iconMap[skill.icon as keyof typeof iconMap];
-                return (
-                  <motion.div
-                    key={skill.name}
-                    variants={fadeInUp}
-                    whileHover={{ scale: 1.05 }}
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <motion.span 
+                    className="text-2xl"
+                    whileHover={{ scale: 1.2, rotate: 10 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <Card className="bg-primary/10 border-primary/20 hover:bg-primary/20 transition-colors duration-200">
-                      <CardContent className="p-4 text-center">
-                        <IconComponent className="h-8 w-8 text-primary mx-auto mb-2" />
-                        <p className="font-medium text-slate-900 dark:text-white">
-                          {skill.name}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </motion.div>
+                    {skill.icon}
+                  </motion.span>
+                  <h3 className="font-semibold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+                    {skill.name}
+                  </h3>
+                </div>
+                <motion.span 
+                  className="text-sm text-slate-500 dark:text-slate-400 group-hover:text-primary font-semibold transition-colors"
+                  initial={{ opacity: 0 }}
+                  animate={animatedSkills.includes(index) ? { opacity: 1 } : { opacity: 0 }}
+                  transition={{ delay: index * 0.1 + 0.5 }}
+                >
+                  {skill.level}%
+                </motion.span>
+              </div>
+              <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2 overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-1000 ease-out"
+                  style={{ 
+                    width: animatedSkills.includes(index) ? `${skill.level}%` : '0%'
+                  }}
+                />
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

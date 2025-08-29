@@ -68,7 +68,8 @@ export function ProjectsSection({ onProjectClick }: ProjectsSectionProps) {
                     {project.title}
                   </CardTitle>
                   <CardDescription className="text-slate-600 dark:text-slate-300">
-                    {project.description}
+                    {project.description.split(' ').slice(0, 15).join(' ')}
+                    {project.description.split(' ').length > 15 ? '...' : ''}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>

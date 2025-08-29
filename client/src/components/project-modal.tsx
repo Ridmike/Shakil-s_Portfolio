@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Github, ExternalLink, Check, ArrowRight } from "lucide-react";
+import { X, Github, ExternalLink, Check, ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -50,7 +50,7 @@ export function ProjectModal({ isOpen, onClose, projectId }: ProjectModalProps) 
                       transition={{ delay: index * 0.1 }}
                       className="flex items-start space-x-2"
                     >
-                      <Check className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
+                      <Star className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
                       <span className="text-slate-700 dark:text-slate-300">{feature}</span>
                     </motion.li>
                   ))}

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { fadeInUp, slideInLeft, slideInRight, staggerContainer } from "@/lib/animations";
 import { PERSONAL_INFO, MILESTONES } from "@/lib/constants";
+import about from "@/../../attached_assets/about.jpg"
 
 export function AboutSection() {
   return (
@@ -34,11 +35,13 @@ export function AboutSection() {
             viewport={{ once: true }}
             variants={slideInLeft}
           >
-            <img
-              src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
-              alt="Modern developer workspace"
-              className="rounded-xl shadow-lg w-full h-auto"
-            />
+            <div className="w-96 h-96 rounded-full overflow-hidden shadow-xl bg-gradient-to-br from-primary/20 to-blue-600/20 flex items-center justify-center">
+              <img
+                src={about}
+                alt="Modern developer workspace"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </motion.div>
 
           <motion.div
@@ -57,40 +60,7 @@ export function AboutSection() {
               </p>
             </div>
 
-            {/* Education Timeline */}
-            <div className="mt-8">
-              <h3 className="text-2xl font-semibold mb-4 text-slate-900 dark:text-white">
-                Education & Milestones
-              </h3>
-              <div className="space-y-4">
-                {MILESTONES.map((milestone, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-start space-x-4"
-                  >
-                    <div 
-                      className={`w-4 h-4 rounded-full mt-2 ${
-                        milestone.color === 'primary' ? 'bg-primary' :
-                        milestone.color === 'secondary' ? 'bg-secondary' :
-                        'bg-accent'
-                      }`}
-                    />
-                    <div>
-                      <h4 className="font-semibold text-slate-900 dark:text-white">
-                        {milestone.title}
-                      </h4>
-                      <p className="text-slate-600 dark:text-slate-400">
-                        {milestone.subtitle}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+           
           </motion.div>
         </div>
       </div>

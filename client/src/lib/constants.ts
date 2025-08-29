@@ -101,19 +101,50 @@ export const PROJECTS = [
       "Created comprehensive functional test plan",
       "Implemented QR code scanning functionality"
     ]
-  }
+  },
+  {
+    id: "greenstay",
+    title: "GreenStay",
+    year: "2023",
+    description:
+      "Green Stay is a specialized platform designed for NSBM students to locate campus accommodation with support from university-appointed wardens. The platform utilizes HTML, CSS, and JavaScript for frontend design, PHP for backend.",
+    // techStack: ["Tech1", "Tech2", "Tech3"],
+    image: "https://via.placeholder.com/150",
+    technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "Bootstrap"],
+    features: [
+      "Campus accommodation listings",
+      "Wardens' support and communication",
+      "User-friendly interface",
+      "Search and filter options",
+      "Booking management system"
+    ],
+    role: "Frontend Developer",
+    responsibilities: [
+      "Led overall project development",
+      "Designed user interfaces for transport and carpooling features",
+      "Integrated Firebase Firestore for real-time data management",
+      "Collaborated with cross-functional teams"
+    ]
+  },
 ];
 
 export const SKILLS = {
   technical: [
-    { name: "React Native", level: 75, category: "Intermediate" },
-    { name: "Flutter", level: 75, category: "Intermediate" },
-    { name: "React.js", level: 70, category: "Intermediate" },
-    { name: "Firebase", level: 80, category: "Intermediate" },
-    { name: "TypeScript", level: 50, category: "Beginner" },
-    { name: "Python", level: 45, category: "Beginner" },
-    { name: "JavaScript", level: 60, category: "Beginner" },
-    { name: "SQL", level: 70, category: "Intermediate" }
+    { name: "React Native", level: 75, icon: "📱" },
+    { name: "Flutter", level: 75, icon: "🐦" },
+    { name: "React.js", level: 70, icon: "⚛️" },
+    { name: "Firebase", level: 80, icon: "🔥" },
+    { name: "TypeScript", level: 50, icon: "📘" },
+    { name: "JavaScript", level: 60, icon: "📜" },
+    { name: "Python", level: 45, icon: "🐍" },
+    { name: "SQL", level: 70, icon: "🗄️" },
+    { name: "HTML", level: 75, icon: "🌐" },
+    { name: "CSS", level: 70, icon: "🎨" },
+    { name: "MongoDB", level: 65, icon: "🍃" },
+    { name: "Figma", level: 70, icon: "🎨" },
+    { name: "Node.js", level: 55, icon: "🟢" },
+    { name: "C#", level: 45, icon: "🔷" },
+    { name: "Angular", level: 60, icon: "🅰️" }
   ],
   soft: [
     { name: "Communication", icon: "MessageCircle" },
